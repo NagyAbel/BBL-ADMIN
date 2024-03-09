@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="src/output.css">
+    <script src="src/utvonalak.js" defer></script>
+
+    <script src="src/megallok.js" defer></script>
+
+
+</head>
+<body class="bg-[#184E77] w-screen h-screen">
+<script src="src/maps.js"></script>
+
+    <div class="flex justify-center grid-flow-row grid-cols-1">
+        <button onclick="Utvonalak()" class="active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
+            <p class="text-[35px] font-medium">Útvonalak
+            </p>
+        </button>   
+        <button onclick="Megallok()"  class="active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
+            <p class="text-[35px] font-medium">Megállók
+            </p>
+        </button> 
+        <button  onclick="Settings()" class="active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
+            <p class="text-[35px] font-medium">Beállítások
+            </p>
+        </button> 
+    </div>
+
+
+
+    <div id="utvonalak" class="hidden flex justify-center w-full h-max">
+        <div class="bg-[#045E79] w-[800px] rounded-[30px] h-max ml-30 mr-30 flex">
+            <div class="h-[400px] w-[250px]">
+                <button onclick="CreateUtvonal()" class=" border-solid border-1 border-cyan-900 active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
+                    <p class="text-[33px] font-medium">Új útvonal</p>
+                </button>
+                <div id="utvonal_holder" class=" gap-[11px]   items-center h-[300px] w-[220px]  scrollable-container overflow-y-scroll  mb-4 overflow-x-hidden ">
+                   
+                    </div>
+            </div>
+    
+            <div class=" flex w-max h-80">
+    
+            <div class=" h-[400px] w-max">
+                <input id="utvonal_nev" type="text" maxlength="25" class="bg-[#168AAD] text-white p-2 rounded-[10px] m-3 outline-none font-medium text-[35px]">
+                <div class="flex ">
+
+
+                
+                <div class="flex flex-col  w-[200px]   ml-1 h-[300px] grid-flow-col grid-cols-1">
+                   
+                    <div class="rounded-[20px] flex bg-cyan-500  w-[220px]  justify-center">
+                        <p class="text-[35px] text-white font-medium">Megállók</p>
+                    </div>
+                    <div id="utvonal_megallo_holder" class=" bg-cyan-900 rounded-[20px] mt-[5px] w-[220px] h-[300px] overflow-y-scroll overflow-x-hidden">
+                     
+                        
+                   
+                   
+                      
+
+                    </div>
+                    
+
+    
+                </div>
+                <div class="flex flex-col  w-[150px]   ml-[30px] h-[300px] grid-flow-col grid-cols-1">
+                   
+                    <div class="rounded-[20px] flex bg-cyan-500  w-[220px]  justify-center">
+                        <p class="text-[25px] text-white font-medium">Összes megálló</p>
+                    </div>
+                    <div id="utvonal_megallo_holder" class=" bg-cyan-900 rounded-[20px] mt-[5px] w-[220px] h-[300px] overflow-y-scroll overflow-x-hidden">
+                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
+                            <p class="text-[18px] ">Sagi Uti mezo</p>
+                        </button>
+                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
+                            <p class="text-[18px] ">Sagi Uti mezo</p>
+                        </button>
+                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
+                            <p class="text-[18px] ">Sagi Uti mezo</p>
+                        </button>
+                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
+                            <p class="text-[18px] ">Sagi Uti mezo</p>
+                        </button>
+                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
+                            <p class="text-[18px] ">Sagi Uti mezo</p>
+                        </button>
+                        
+                        
+                   
+                   
+                      
+
+                    </div>
+                    
+
+    
+                </div>
+                </div>
+
+            </div>
+            </div>
+            <div class=" ml-[15px] h-[80px] w-[80px]  content-center  ">
+                <button onclick="DeleteUtvonal()" class="active:scale-95 hover:scale-[1.01] w-[50px] h-[50px] mt-[20px]" ><img   src="static/delete.png" ></button>
+            </div>
+         
+        </div>
+        </div>
+        
+
+    <div id="megallok" class="hidden flex justify-center w-full h-max">
+        <div class="bg-[#045E79] w-[800px] rounded-[30px] h-max ml-30 mr-30 flex">
+            <div class="h-[400px] w-[250px]">
+                <button onclick="CreateMegallo()" class=" active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
+                    <p class="text-[33px] font-medium">Új Megálló</p>
+                </button>
+                <div id="megallo_holder" class="   gap-[11px]   items-center h-[300px] w-[220px]  scrollable-container overflow-y-scroll  mb-4 overflow-x-hidden">
+                   
+                
+                    </div>
+            </div>
+    
+            <div class=" flex w-[425px] h-[80px]">
+    
+            <div class=" h-[400px] w-max">
+                <input id="megallo_nev" type="text" maxlength="25" class="bg-[#168AAD] text-white p-2 rounded-[10px] m-3 outline-none font-medium text-[35px]">
+                    <div id="map"class="bg-cyan-500 " style="height: 300px; width: 80%;"></div>
+
+                
+
+            </div>
+
+
+
+
+           
+           
+            
+        </div>
+        <div class=" ml-[45px] h-[80px] w-[80px]  content-center  ">
+            <button onclick="DeleteMegallo()" class="active:scale-95 hover:scale-[1.01] w-[50px] h-[50px] mt-[20px]" ><img   src="static/delete.png" ></button>
+        </div>
+
+        
+        
+    </div>
+    </div>
+    
+    <div id="settings" class="hidden flex justify-center w-full h-max">
+        <div class="bg-[#045E79] w-[800px] rounded-[30px] h-max ml-30 mr-30 flex">
+            <div class="h-[400px] w-[250px]">
+                <button class="active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
+                    <p class="text-[33px] font-medium">Új útvonal</p>
+                </button>
+                <div class=" grid-flow-col  h-[300px] w-[220px] nap-y scrollable-container overflow-y-scroll grid-cols-1 mb-4 overflow-x-hidden">
+                    <button class="hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
+                        <p class="text-[35px]">Újszentes</p>
+                    </button>
+              
+                    </button>
+                    </div>
+            </div>
+    
+            <div class=" flex w-max h-80">
+    
+            <div class="bg-cyan-950 h-[400px] w-max">
+                <input  type="text" maxlength="25" class="bg-[#168AAD] text-white p-2 rounded-[10px] m-3 outline-none font-medium text-[35px]">
+                <div class="flex flex-col     ml-10 h-[300px] grid-flow-col grid-cols-1">
+                   
+                    <div class="rounded-[20px] flex bg-cyan-500  w-[200px]  justify-center">
+                        <p class="text-[35px] text-white font-medium">Megállók</p>
+                    </div>
+                    <div class=" bg-slate-500 w-[200px] h-[300px] overflow-y-auto overflow-x-hidden">
+                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
+                            <p class="text-[25px] ">Újszentes</p>
+                        </button>
+                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
+                            <p class="text-[25px] ">Újszentes</p>
+                        </button> 
+                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
+                            <p class="text-[25px] ">Újszentes</p>
+                        </button> 
+                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
+                            <p class="text-[25px] ">Újszentes</p>
+                        </button> 
+                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
+                            <p class="text-[25px] ">Újszentes</p>
+                        </button> 
+
+                    </div>
+
+    
+                </div>
+              
+
+            </div>
+
+
+           
+           
+            
+        </div>
+        
+    </div>
+
+
+    
+    
+    
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXgZMvyF9VVMvzMxMKjM51_orUCZqG4NE&callback=initMap"></script>
+</body>
+</html>
