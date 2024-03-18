@@ -1,33 +1,3 @@
-var panels=[
-    document.getElementById("utvonalak"),
-    document.getElementById("megallok"),
-    document.getElementById("settings")
-
-]
-panels[0].classList.toggle("hidden",false);
-
-
-function Utvonalak()
-{
-    panels[0].classList.toggle("hidden",false);
-    panels[1].classList.toggle("hidden",true);
-    panels[2].classList.toggle("hidden",true);
-}
-function Megallok()
-{
-    panels[0].classList.toggle("hidden",true);
-    panels[1].classList.toggle("hidden",false);
-    panels[2].classList.toggle("hidden",true);
-}
-
-function Settings()
-{
-    panels[0].classList.toggle("hidden",true);
-    panels[1].classList.toggle("hidden",true);
-    panels[2].classList.toggle("hidden",false);
-}
-
-Utvonalak();
 
 var megallok=[];
 var megallo_buttons = [];
@@ -54,6 +24,7 @@ function UpdateMegalloList()
 {
     console.log("Updated List");
     var a = document.getElementById("megallo_holder");
+    var b = document.getElementById("megallo_holder_utvonal");
     var name = "";
     var button = "<button class='hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1  rounded-[10px] text-white m-3'><p class='text-[35px]'>"+ name + "</p></button>";
    
@@ -66,6 +37,7 @@ function UpdateMegalloList()
     })
     .then(result=>{
         a.innerHTML = "";
+        b.innerHTML = "";
         megallok = [];
         for (var i = 0; i < result.length; i++) {
             var entry = result[i];
@@ -73,16 +45,18 @@ function UpdateMegalloList()
             megallok.push(megallo);
             name = megallo.name;
             var button = "<button id='"+i+"' onClick='LoadMegallo("+i+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
+            var button2 = "<button id='"+i+"|2' onClick='SelectMegalloForSwap("+i+",2"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
 
             a.innerHTML+=button;
+            b.innerHTML+=button2;
            // a.innerHTML+="</br> ";
             
         }
     })
 
 
- 
-    
+    return megallok;
+
 }
 
 function UpdatePosition(lat1,lng1,lat2,lng2)
@@ -253,18 +227,36 @@ function GetMegallokFromString(data)
 {
     
     if(data == "")return [];
-    UpdateMegalloList();
-
+   // var m = UpdateMegalloList();
+    console.log("Data: " + data);
+    console.log(megallok);
     var _megallok = [];
     var list = data.split("|");
     megallok.forEach(element => {
         
         var index = list.indexOf(element.id.toString());
+        console.log(index);
         if(index != -1)
         {
             _megallok[index]=element;
+            list.splice(index,1);
+
         }
     });
+
+    
+        list.forEach(element =>{
+            if(element == '-1')
+            {
+                var new_megallo = new Megallo('-----','-1','-1');
+                _megallok.push(new_megallo);
+            }
+        })
+    
+
+
+
+   
 
     return _megallok;
 }
@@ -279,5 +271,3 @@ function GetStringFromMegallo(data)
 
     return s;
 }
-UpdateMegalloList();
-UpdateUtvonalList();

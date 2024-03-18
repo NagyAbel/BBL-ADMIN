@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="src/output.css">
+
     <script src="src/utvonalak.js" defer></script>
 
     <script src="src/megallok.js" defer></script>
+    <script src="src/main.js" defer></script>
 
 
 </head>
@@ -51,12 +53,12 @@
 
                 
                 <div class="flex flex-col  w-[200px]   ml-1 h-[300px] grid-flow-col grid-cols-1">
-                   <div class="w-[230px] bg-yellow-500 flex">
+                   <div class="w-[230px]  flex">
                     <div class="rounded-[20px] flex bg-cyan-500  w-[180px]  justify-center">
                         <p class="text-[35px] text-white font-medium">Megállók</p>
                     </div>
-                    <div class="w-[50px] bg-blue-800">
-                        <button><img class="w-[50px] m-2 h-max" src="static/swap.png" ></button>
+                    <div class="ml-1 w-[50px] hover:scale-1.01 active:scale-95  rounded-[20px] bg-cyan-500 content-center flex">
+                        <button onclick = "AddNewMegalloToUtvonal()" class=" h-max "><img class="w-[35px] h-[35px] mt-2 ml-2" src="static/plus.png" ></button>
                     </div>
                     </div>
                     <div id="utvonal_megallo_holder" class=" bg-cyan-900 rounded-[20px] mt-[5px] w-[220px] h-[300px] overflow-y-scroll overflow-x-hidden">
@@ -71,30 +73,14 @@
 
     
                 </div>
-                <div class="flex flex-col  w-[150px]   ml-[30px] h-[300px] grid-flow-col grid-cols-1">
+
+                <div class="flex flex-col  w-[150px]   ml-[80px] h-[300px] grid-flow-col grid-cols-1">
                    
                     <div class="rounded-[20px] flex bg-cyan-500  w-[220px]  justify-center">
                         <p class="text-[25px] text-white font-medium">Összes megálló</p>
                     </div>
-                    <div id="utvonal_megallo_holder" class=" bg-cyan-900 rounded-[20px] mt-[5px] w-[220px] h-[300px] overflow-y-scroll overflow-x-hidden">
-                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
-                            <p class="text-[18px] ">Sagi Uti mezo</p>
-                        </button>
-                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
-                            <p class="text-[18px] ">Sagi Uti mezo</p>
-                        </button>
-                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
-                            <p class="text-[18px] ">Sagi Uti mezo</p>
-                        </button>
-                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
-                            <p class="text-[18px] ">Sagi Uti mezo</p>
-                        </button>
-                        <button class=" w-[180px] h-[50px] hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white ml-3 mt-2">
-                            <p class="text-[18px] ">Sagi Uti mezo</p>
-                        </button>
-                        
-                        
-                   
+                    <div id="megallo_holder_utvonal" class=" bg-cyan-900 rounded-[20px] mt-[5px] w-[220px] h-[300px] overflow-y-scroll overflow-x-hidden">
+                     
                    
                       
 

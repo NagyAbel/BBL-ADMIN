@@ -71,6 +71,48 @@ function CreateUtvonal()
 }
 
 
+function AddNewMegalloToUtvonal()
+{
+    console.log(loaded_utvonal);
+    if(loaded_utvonal=-1)return;
+    var id  = utvonalak[loaded_utvonal].id
+
+    var new_megallo = new Megallo('-----','-1','-1');
+    utvonalak[loaded_utvonal].megallok.push(new_megallo);
+    var d  = GetStringFromMegallo(utvonalak[loaded_utvonal].megallok);
+    utvonalak
+    var data = {
+        id:id,
+        megallok:d
+    }
+    console.log("Clicked");
+    
+    var formData = new URLSearchParams(data).toString();
+
+    fetch('api/update_megallo_list.php',
+    {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded'
+        },
+        body:formData
+    })
+    .then(response => response.text())
+.then(result => {
+    // The request was successful, and the response is in the 'result' variable
+    console.log("Jej sikerult:" + result);
+    UpdateMegalloFromUtvonal(loaded_utvonal);
+
+})
+.catch(error => {
+    // Handle errors
+    console.error('Error:', error);
+});
+
+
+
+}
+
 function LoadUtvonal(id)
 {
     var input =clearEventListeners(document.getElementById("utvonal_nev"));
@@ -90,11 +132,51 @@ function LoadUtvonal(id)
     {
         UpdateUtvonalNev(id);
     });
-    console.log("Load utvonal: "+ utvonalak[id].name);
+    console.log("Load utvonal: "+ loaded_utvonal);
     input.value = utvonalak[id].name;
     UpdateMegalloFromUtvonal(id);
     
 
+}
+var loaded_megallo_1 = -1;
+var loaded_megallo_2 = -1;
+function SelectMegalloForSwap(id,type)
+{
+
+    if(type==1 && loaded_megallo_1 == -1)
+    {
+        loaded_megallo_1 = id+"|" + type;
+        document.getElementById(loaded_megallo_1).classList.add("border-[3px]");
+    } else if(type==2 && loaded_megallo_2 == -1)
+    {
+        loaded_megallo_2 = id + "|" + type;
+        document.getElementById(loaded_megallo_2).classList.add("border-[3px]");
+
+    }else if(loaded_megallo_1==id+"|"+type)
+    {
+        loaded_megallo_1 = -1;
+        document.getElementById(id+"|"+type).classList.remove("border-[3px]");
+
+    }else if(loaded_megallo_2==id+"|"+type)
+    {
+        loaded_megallo_2 = -1;
+        document.getElementById(id+"|"+type).classList.remove("border-[3px]");
+
+    }else if(type=="1")
+    {
+        document.getElementById(loaded_megallo_1).classList.remove("border-[3px]");
+        loaded_megallo_1=id+"|"+type;
+        document.getElementById(loaded_megallo_1).classList.add("border-[3px]");
+
+    }else
+    {
+        document.getElementById(loaded_megallo_2).classList.remove("border-[3px]");
+        loaded_megallo_2 = id+"|" + type;
+        document.getElementById(loaded_megallo_2).classList.add("border-[3px]");
+
+    }
+
+    
 }
 
 function UpdateMegalloFromUtvonal(id)
@@ -103,10 +185,12 @@ function UpdateMegalloFromUtvonal(id)
     var holder = document.getElementById("utvonal_megallo_holder");
     var button = "";
     holder.innerHTML = "";
+    loaded_megallo_1  = -1;
+    loaded_megallo_2 = -1;
 
     utvonalak[id].megallok.forEach(element => {
         var index = utvonalak[id].megallok.indexOf(element);
-     button = "<button id='megallo_"+index+"' onClick='LoadMegallo("+index+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#9fc0cb5a] px-4 py-1 ml-3 mt-2 rounded-[10px] text-white'><p class='text-[18px]'>"+ element.name + "</p></button>";
+     button = "<button id='"+index+"|1' onClick='SelectMegalloForSwap("+index+",1"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#9fc0cb5a] px-4 py-1 ml-3 mt-2 rounded-[10px] text-white'><p class='text-[18px]'>"+ element.name + "</p></button>";
         holder.innerHTML+=button;
     });
 }

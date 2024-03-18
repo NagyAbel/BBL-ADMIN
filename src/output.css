@@ -556,6 +556,18 @@ video {
   margin: 0.5rem;
 }
 
+.m-auto {
+  margin: auto;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -594,6 +606,26 @@ video {
 
 .mt-\[5px\] {
   margin-top: 5px;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-1\.5 {
+  margin-top: 0.375rem;
+}
+
+.ml-\[50px\] {
+  margin-left: 50px;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-\[80px\] {
+  margin-left: 80px;
 }
 
 .inline {
@@ -643,6 +675,18 @@ video {
 
 .h-\[45px\] {
   height: 45px;
+}
+
+.h-\[40px\] {
+  height: 40px;
+}
+
+.h-\[35px\] {
+  height: 35px;
+}
+
+.h-\[25px\] {
+  height: 25px;
 }
 
 .w-\[150px\] {
@@ -704,6 +748,18 @@ video {
 
 .w-\[45px\] {
   width: 45px;
+}
+
+.w-\[40px\] {
+  width: 40px;
+}
+
+.w-\[35px\] {
+  width: 35px;
+}
+
+.w-\[25px\] {
+  width: 25px;
 }
 
 .snap-start {
