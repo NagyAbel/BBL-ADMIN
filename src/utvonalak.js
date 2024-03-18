@@ -74,7 +74,7 @@ function CreateUtvonal()
 function AddNewMegalloToUtvonal()
 {
     console.log(loaded_utvonal);
-    if(loaded_utvonal=-1)return;
+    if(loaded_utvonal==-1)return;
     var id  = utvonalak[loaded_utvonal].id
 
     var new_megallo = new Megallo('-----','-1','-1');
