@@ -101,6 +101,8 @@ function AddNewMegalloToUtvonal()
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
     console.log("Jej sikerult:" + result);
+    UpdateMegalloList();
+
     UpdateMegalloFromUtvonal(loaded_utvonal);
 
 })
@@ -176,7 +178,60 @@ function SelectMegalloForSwap(id,type)
 
     }
 
+
+    if(loaded_megallo_1 != -1 && loaded_megallo_2 != -1)
+    {
+        var  a = document.getElementById("swap_button");
+        a.classList.toggle("hidden",false);
+    }else
+    {
+        var  a = document.getElementById("swap_button");
+        a.classList.toggle("hidden",true);
+    }
+
     
+}
+
+function SwapMegallo()
+{
+    if(loaded_utvonal==-1)return;
+    if(loaded_megallo_1 == -1)return;
+    if(loaded_megallo_2 == -2) return;
+
+    var id  = utvonalak[loaded_utvonal].id
+
+    //var new_megallo = new Megallo('-----','-1','-1');
+    utvonalak[loaded_utvonal].megallok[loaded_megallo_1.split("|")[0]]=megallok[loaded_megallo_2.split("|")[0]];
+    var d  = GetStringFromMegallo(utvonalak[loaded_utvonal].megallok);
+    utvonalak
+    var data = {
+        id:id,
+        megallok:d
+    }
+    console.log("Clicked");
+    
+    var formData = new URLSearchParams(data).toString();
+
+    fetch('api/update_megallo_list.php',
+    {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded'
+        },
+        body:formData
+    })
+    .then(response => response.text())
+.then(result => {
+    // The request was successful, and the response is in the 'result' variable
+    console.log("Jej sikerult:" + result);
+    UpdateMegalloList();
+    UpdateMegalloFromUtvonal(loaded_utvonal);
+
+})
+.catch(error => {
+    // Handle errors
+    console.error('Error:', error);
+});  
 }
 
 function UpdateMegalloFromUtvonal(id)
@@ -187,11 +242,11 @@ function UpdateMegalloFromUtvonal(id)
     holder.innerHTML = "";
     loaded_megallo_1  = -1;
     loaded_megallo_2 = -1;
-
+    var index = 0;
     utvonalak[id].megallok.forEach(element => {
-        var index = utvonalak[id].megallok.indexOf(element);
      button = "<button id='"+index+"|1' onClick='SelectMegalloForSwap("+index+",1"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#9fc0cb5a] px-4 py-1 ml-3 mt-2 rounded-[10px] text-white'><p class='text-[18px]'>"+ element.name + "</p></button>";
         holder.innerHTML+=button;
+        index++;
     });
 }
 function UpdateUtvonalNev(id)
@@ -251,6 +306,50 @@ fetch('api/delete_utvonal.php', {
     loaded_utvonal = -1;
     console.log(result);
     UpdateUtvonalList();
+
+})
+.catch(error => {
+    // Handle errors
+    console.error('Error:', error);
+});
+
+}
+
+function DeleteMegalloFromUtvonal()
+{
+    if(loaded_utvonal==-1)return;
+    console.log(loaded_megallo_1);
+    if(loaded_megallo_1 == -1)return;
+
+    var id  = utvonalak[loaded_utvonal].id
+
+    //var new_megallo = new Megallo('-----','-1','-1');
+    utvonalak[loaded_utvonal].megallok.splice(loaded_megallo_1.split("|")[0],1);
+    var d  = GetStringFromMegallo(utvonalak[loaded_utvonal].megallok);
+    utvonalak
+    var data = {
+        id:id,
+        megallok:d
+    }
+    console.log("Clicked");
+    
+    var formData = new URLSearchParams(data).toString();
+
+    fetch('api/update_megallo_list.php',
+    {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded'
+        },
+        body:formData
+    })
+    .then(response => response.text())
+.then(result => {
+    // The request was successful, and the response is in the 'result' variable
+    console.log("Jej sikerult:" + result);
+    UpdateMegalloList();
+
+    UpdateMegalloFromUtvonal(loaded_utvonal);
 
 })
 .catch(error => {

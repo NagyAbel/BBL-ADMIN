@@ -30,7 +30,6 @@ function Settings()
 function UpdateALL()
 {
  UpdateMegalloList();
- UpdateUtvonalList();
 
 }
 UpdateALL();

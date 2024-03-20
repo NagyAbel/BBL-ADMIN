@@ -52,13 +52,17 @@
 
 
                 
-                <div class="flex flex-col  w-[200px]   ml-1 h-[300px] grid-flow-col grid-cols-1">
-                   <div class="w-[230px]  flex">
-                    <div class="rounded-[20px] flex bg-cyan-500  w-[180px]  justify-center">
-                        <p class="text-[35px] text-white font-medium">Megállók</p>
+                <div class="flex flex-col  w-[230px]   ml-1 h-[300px] grid-flow-col grid-cols-1">
+                   <div class="w-[250px]  flex">
+                    <div class="rounded-[20px] flex bg-cyan-500   w-[150px] h-[50px] justify-center">
+                        <p class="text-[25px] mt-1.5 text-white font-medium">Megállók</p>
                     </div>
-                    <div class="ml-1 w-[50px] hover:scale-1.01 active:scale-95  rounded-[20px] bg-cyan-500 content-center flex">
-                        <button onclick = "AddNewMegalloToUtvonal()" class=" h-max "><img class="w-[35px] h-[35px] mt-2 ml-2" src="static/plus.png" ></button>
+                    <div class="ml-1 w-[40px] hover:scale-1.01 active:scale-95  rounded-[13px] bg-cyan-500 content-center flex">
+                        <button onclick = "AddNewMegalloToUtvonal()" class="h-max "><img class="ml-[6px] mt-[10px] w-[30px] h-[30px]" src="static/plus.png" ></button>
+                    </div>
+                    <div class="ml-1 w-[40px] hover:scale-1.01 active:scale-95  rounded-[13px] bg-cyan-500 content-center flex">
+                        <button onclick = "DeleteMegalloFromUtvonal()" class="h-max "><img class="ml-[6px] mt-[10px] w-[30px] h-[30px]" src="static/delete_white.png" ></button>
+
                     </div>
                     </div>
                     <div id="utvonal_megallo_holder" class=" bg-cyan-900 rounded-[20px] mt-[5px] w-[220px] h-[300px] overflow-y-scroll overflow-x-hidden">
@@ -73,8 +77,14 @@
 
     
                 </div>
+                
 
-                <div class="flex flex-col  w-[150px]   ml-[80px] h-[300px] grid-flow-col grid-cols-1">
+                <div class="w-[80px] h-[300px]  flex items-center">
+                    <div id="swap_button" class="ml-1 w-[60px] h-[60px] hover:scale-1.01 active:scale-95 hidden  rounded-[13px] bg-cyan-500 items-center flex">
+                        <button onclick = "SwapMegallo()" class="ml-2.5 "><img class=" w-[40px] h-[40px]" src="static/swap.png" ></button>
+                    </div>
+                </div>
+                <div class="flex flex-col  w-[150px]   ml-[0px] h-[300px] grid-flow-col grid-cols-1">
                    
                     <div class="rounded-[20px] flex bg-cyan-500  w-[220px]  justify-center">
                         <p class="text-[25px] text-white font-medium">Összes megálló</p>
@@ -164,21 +174,7 @@
                         <p class="text-[35px] text-white font-medium">Megállók</p>
                     </div>
                     <div class=" bg-slate-500 w-[200px] h-[300px] overflow-y-auto overflow-x-hidden">
-                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
-                            <p class="text-[25px] ">Újszentes</p>
-                        </button>
-                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
-                            <p class="text-[25px] ">Újszentes</p>
-                        </button> 
-                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
-                            <p class="text-[25px] ">Újszentes</p>
-                        </button> 
-                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
-                            <p class="text-[25px] ">Újszentes</p>
-                        </button> 
-                        <button class=" hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1 rounded-[10px] text-white m-3">
-                            <p class="text-[25px] ">Újszentes</p>
-                        </button> 
+                   
 
                     </div>
 

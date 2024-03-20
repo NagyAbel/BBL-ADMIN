@@ -52,8 +52,10 @@ function UpdateMegalloList()
            // a.innerHTML+="</br> ";
             
         }
+        console.log("Mukodik a megallo:" + megallok[0].name);
     })
 
+    //UpdateUtvonalList();
 
     return megallok;
 
@@ -228,28 +230,23 @@ function GetMegallokFromString(data)
     
     if(data == "")return [];
    // var m = UpdateMegalloList();
+   //var m = UpdateMegalloList();
     console.log("Data: " + data);
     console.log(megallok);
     var _megallok = [];
     var list = data.split("|");
-    megallok.forEach(element => {
-        
-        var index = list.indexOf(element.id.toString());
-        console.log(index);
-        if(index != -1)
-        {
-            _megallok[index]=element;
-            list.splice(index,1);
-
-        }
-    });
+   
 
     
         list.forEach(element =>{
-            if(element == '-1')
+
+            if(Number(element) == -1)
             {
                 var new_megallo = new Megallo('-----','-1','-1');
                 _megallok.push(new_megallo);
+            }else if(element != "")
+            {
+                _megallok.push(GetMegalloFromID(megallok,element));
             }
         })
     
@@ -259,6 +256,22 @@ function GetMegallokFromString(data)
    
 
     return _megallok;
+}
+
+function GetMegalloFromID(_megallok,id)
+{
+    console.log(id);
+    var a = null;
+    _megallok.forEach(element =>{
+        console.log("Element id: " + element.id);
+        if(element.id ==id)
+        {
+             a=element;
+            
+        }
+    })
+
+    return a;
 }
 //Returns a string of ids from a given array of type Megallo
 function GetStringFromMegallo(data)
