@@ -9,7 +9,7 @@ class Utvonal{
     }
 }
 
-function UpdateUtvonalList()
+function UpdateUtvonalList(_megallok)
 {
     var a = document.getElementById("utvonal_holder");
     var name = "";
@@ -22,6 +22,7 @@ function UpdateUtvonalList()
         return response.json();
     })
     .then(result=>{
+       // console.log("UPDATE MEGALLOK: "+ _megallok[0].name);
         a.innerHTML = "";
         utvonalak = [];
         for (var i = 0; i < result.length; i++) {
@@ -61,7 +62,7 @@ function CreateUtvonal()
     .then(result => {
         // The request was successful, and the response is in the 'result' variable
         console.log(result);
-        UpdateUtvonalList();
+        UpdateUtvonalList(megallok);
     
     })
     .catch(error => {
@@ -273,7 +274,7 @@ function UpdateUtvonalNev(id)
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
     console.log(result);
-    UpdateUtvonalList();
+    UpdateUtvonalList(megallok);
 
 })
 .catch(error => {
@@ -305,7 +306,7 @@ fetch('api/delete_utvonal.php', {
     // The request was successful, and the response is in the 'result' variable
     loaded_utvonal = -1;
     console.log(result);
-    UpdateUtvonalList();
+    UpdateUtvonalList(megallok);
 
 })
 .catch(error => {

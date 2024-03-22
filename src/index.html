@@ -18,6 +18,10 @@
 
     <div class="flex justify-center grid-flow-row grid-cols-1">
         <button onclick="Utvonalak()" class="active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
+            <p class="text-[35px] font-medium">Buszok
+            </p>
+        </button>   
+        <button onclick="Utvonalak()" class="active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
             <p class="text-[35px] font-medium">Útvonalak
             </p>
         </button>   
@@ -35,7 +39,7 @@
 
     <div id="utvonalak" class="hidden flex justify-center w-full h-max">
         <div class="bg-[#045E79] w-[800px] rounded-[30px] h-max ml-30 mr-30 flex">
-            <div class="h-[400px] w-[250px]">
+            <div class="h-[450px] w-[250px]">
                 <button onclick="CreateUtvonal()" class=" border-solid border-1 border-cyan-900 active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
                     <p class="text-[33px] font-medium">Új útvonal</p>
                 </button>
@@ -113,7 +117,7 @@
 
     <div id="megallok" class="hidden flex justify-center w-full h-max">
         <div class="bg-[#045E79] w-[800px] rounded-[30px] h-max ml-30 mr-30 flex">
-            <div class="h-[400px] w-[250px]">
+            <div class="h-[450px] w-[250px]">
                 <button onclick="CreateMegallo()" class=" active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
                     <p class="text-[33px] font-medium">Új Megálló</p>
                 </button>
@@ -127,7 +131,12 @@
     
             <div class=" h-[400px] w-max">
                 <input id="megallo_nev" type="text" maxlength="25" class="bg-[#168AAD] text-white p-2 rounded-[10px] m-3 outline-none font-medium text-[35px]">
-                    <div id="map"class="bg-cyan-500 " style="height: 300px; width: 80%;"></div>
+                <div class="flex inline-flex items-center   ">
+                    <input id="searchInput" placeholder="Keresés..." type="text"     maxlength="25" class="bg-[#1c4a58] text-white p-2 rounded-[10px] m-3 outline-none font-medium text-[20px]">
+
+                </div>
+
+                    <div id="map"class="bg-cyan-500 w-[530px] h-[330px]"></div>
 
                 
 
@@ -151,7 +160,7 @@
     
     <div id="settings" class="hidden flex justify-center w-full h-max">
         <div class="bg-[#045E79] w-[800px] rounded-[30px] h-max ml-30 mr-30 flex">
-            <div class="h-[400px] w-[250px]">
+            <div class="h-[450px] w-[250px]">
                 <button class="active:scale-95 hover:scale-[1.01] hover:bg-[#0d4e62] bg-[#168AAD] px-4 py-1 rounded-[26px] text-white m-3">
                     <p class="text-[33px] font-medium">Új útvonal</p>
                 </button>
@@ -196,6 +205,6 @@
     
     
     
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXgZMvyF9VVMvzMxMKjM51_orUCZqG4NE&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPSJR3gOUrSEfOJPHXndxe58_MDMhVdnY&libraries=places&callback=initMap&loading=async"></script>
 </body>
 </html>

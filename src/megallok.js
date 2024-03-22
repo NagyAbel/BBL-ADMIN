@@ -55,7 +55,7 @@ function UpdateMegalloList()
         console.log("Mukodik a megallo:" + megallok[0].name);
     })
 
-    UpdateUtvonalList();
+    UpdateUtvonalList(megallok);
 
     return megallok;
 
