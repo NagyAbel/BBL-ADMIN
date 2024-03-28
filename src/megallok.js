@@ -20,8 +20,14 @@ var loaded_id = -1;
 
 
 
-function UpdateMegalloList()
+function UpdateMegalloList(force=true)
 {
+    //Caching
+   // if(megallok.length != 0 && !force)
+   //{
+      //return megallok;
+        
+     // }
     console.log("Updated List");
     var a = document.getElementById("megallo_holder");
     var b = document.getElementById("megallo_holder_utvonal");
@@ -38,11 +44,11 @@ function UpdateMegalloList()
     .then(result=>{
         a.innerHTML = "";
         b.innerHTML = "";
-        megallok = [];
+        var _megallok = [];
         for (var i = 0; i < result.length; i++) {
             var entry = result[i];
             var megallo = new Megallo(entry.nev,entry.hely,entry.id);
-            megallok.push(megallo);
+            _megallok.push(megallo);
             name = megallo.name;
             var button = "<button id='"+i+"' onClick='LoadMegallo("+i+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
             var button2 = "<button id='"+i+"|2' onClick='SelectMegalloForSwap("+i+",2"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
@@ -52,12 +58,16 @@ function UpdateMegalloList()
            // a.innerHTML+="</br> ";
             
         }
+        megallok=_megallok;
         console.log("Mukodik a megallo:" + megallok[0].name);
+        UpdateUtvonalList(_megallok);
+        return _megallok;
+        
+
     })
 
-    UpdateUtvonalList(megallok);
+    //UpdateUtvonalList(megallok);
 
-    return megallok;
 
 }
 
@@ -225,14 +235,14 @@ fetch('api/delete_megallo.php', {
 }
 
 //Returns an array of type Megallo from a given ID's
-function GetMegallokFromString(data)
+function GetMegallokFromString(data,m_list)
 {
     
     if(data == "")return [];
    // var m = UpdateMegalloList();
    //var m = UpdateMegalloList();
     console.log("Data: " + data);
-    console.log(megallok);
+    console.log(m_list);
     var _megallok = [];
     var list = data.split("|");
    
@@ -246,7 +256,7 @@ function GetMegallokFromString(data)
                 _megallok.push(new_megallo);
             }else if(element != "")
             {
-                _megallok.push(GetMegalloFromID(megallok,element));
+                _megallok.push(GetMegalloFromID(m_list,element));
             }
         })
     
@@ -260,7 +270,6 @@ function GetMegallokFromString(data)
 
 function GetMegalloFromID(_megallok,id)
 {
-    console.log(id);
     var a = null;
     _megallok.forEach(element =>{
         console.log("Element id: " + element.id);

@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
 
     
-        $sql = "DELETE FROM Megallok Where id = '$id' ";
+        $sql = "DELETE FROM megallok Where id = '$id' ";
         if ($conn->query($sql) === TRUE) {
             echo "Deleted Megallo: $id";
         } else {

@@ -1,3 +1,3 @@
 <?php
- include "src/index.html";
+ include "index.html";
 ?>

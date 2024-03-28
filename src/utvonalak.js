@@ -11,6 +11,7 @@ class Utvonal{
 
 function UpdateUtvonalList(_megallok)
 {
+    
     var a = document.getElementById("utvonal_holder");
     var name = "";
     var button = "";
@@ -25,9 +26,10 @@ function UpdateUtvonalList(_megallok)
        // console.log("UPDATE MEGALLOK: "+ _megallok[0].name);
         a.innerHTML = "";
         utvonalak = [];
+        console.log(_megallok + "   :MEGALLOK");
         for (var i = 0; i < result.length; i++) {
             var entry = result[i];
-            var utvonal = new Utvonal(entry.nev,entry.id, GetMegallokFromString(entry.megallok));
+            var utvonal = new Utvonal(entry.nev,entry.id, GetMegallokFromString(entry.megallok,_megallok));
             utvonalak.push(utvonal);
             console.log(utvonal);
             name = utvonal.name;
@@ -102,7 +104,7 @@ function AddNewMegalloToUtvonal()
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
     console.log("Jej sikerult:" + result);
-    UpdateMegalloList();
+    UpdateMegalloList(false);
 
     UpdateMegalloFromUtvonal(loaded_utvonal);
 

@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
 
     
-        $sql = "DELETE FROM Utvonalak Where id = '$id' ";
+        $sql = "DELETE FROM utvonalak Where id = '$id' ";
         if ($conn->query($sql) === TRUE) {
             echo "Deleted Utvonal: $id";
         } else {

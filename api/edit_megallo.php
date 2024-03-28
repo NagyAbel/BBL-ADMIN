@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($nev != "")
     {
-        $sql = "UPDATE Megallok SET nev = '$nev' WHERE id = $id";
+        $sql = "UPDATE megallok SET nev = '$nev' WHERE id = $id";
         if ($conn->query($sql) === TRUE) {
             echo "Record inserted successfully";
         } else {
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($hely != "")
     {
-        $sql = "UPDATE Megallok SET hely = '$hely' WHERE id = $id";
+        $sql = "UPDATE megallok SET hely = '$hely' WHERE id = $id";
         if ($conn->query($sql) === TRUE) {
             echo "Record inserted successfully";
         } else {
