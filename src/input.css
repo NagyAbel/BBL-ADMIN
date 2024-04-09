@@ -22,18 +22,19 @@
   
   /* Track */
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(0, 157, 255); 
-    border-radius: 10px;
+    border-color: black;
+    background-color: #35473a8c;
+    border-radius: 5px;
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: rgb(0, 40, 68); 
-    border-radius: 10px;
+    background: #3D5444; 
+    border-radius: 5px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #023a63; 
+    background: #65866f; 
   }
   

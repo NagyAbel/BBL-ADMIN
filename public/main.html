@@ -1,14 +1,68 @@
 <html>
     <link rel="stylesheet" href="../src/output.css">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="src/utvonalak.js" defer></script>
+        <script src="src/megallok.js" defer></script>
+        <script src="src/data.js" defer></script>
 
-    <body class="bg-[#184E77]">
-        <div class="w-100  flex justify-center snap-center mt-[40px] mb-[50px] "><p class="w-[600px] h-[100px] bg-[#168AAD] rounded-[30px] text-center pt-[12px] self-center text-white font-medium text-[50px]">Bartok Busz</p></div>
+    </head>
+    <body class="bg-[#304D30] h-100 flex justify-center overflow-y-hidden">
+        
+        <div id="MAIN" class=" w-[850px] h-100  flex items-center flex-col ">
+              <div class=" flex-shrink-0 inline-block w-[800px] h-[155px] rounded-[55px] mt-[15px] bg-[#163020] flex justify-center items-center">
+                <p class="text-white font-[Museo] text-[65px]">Bartók Busz</p>
+              </div>
+              
+              <div class=" mt-[25px] w-[800px] h-[100vh] pb-[25px] bg-[#163020] rounded-t-[30px]">
+                    <div class="w-full h-[150px] bg-[#3D5444] rounded-t-[30px]  flex items-center justify-center"><p class="text-white font-[Museo] text-[55px]">Útvonalak</p></div>
 
-        <div class="w-100 h-[80vh] bg-[#1a2b3000] flex justify-center">
+                    <div id="utvonal_holder" class="w-[800px]  h-[80vh] mt-[25px] flex overflow-y-scroll  overflow-y-visible  pb-[100px] overflow-x-hidden flex-col">
+                        <button class=" flex-shrink-0 inline mb-[25px] w-full h-[150px] bg-[#798B7D] rounded-[10px]"><p class="text-white font-[Museo] text-[40px]">Mosnica</p></button>
 
-            <div class="w-[800px] rounded-[20p]  h-[100vh] bg-[#045E79]">
 
-            </div>
+                    </div>
+              </div>
         </div>
+        <div id = "MEGALLO"  class=" hidden w-[850px] h-100  flex items-center flex-col ">
+            <button  onclick="DeselectUtvonal()" class=" active:scale-95 hover:scale-[1.01] flex-shrink-0 inline-block w-[800px] h-[155px] rounded-[55px] mt-[15px] bg-[#163020] flex justify-center items-center">
+                <div class="w-[200px] h-100">
+                    <img   src="static/back_button.png" class="ml-[25px] w-[50px] h-[50px]">
+
+                </div>
+              <p id="utvonal_nev" class="text-white font-[Museo] text-[65px]">Bartók Busz</p>
+              <div class="w-[200px] h-100">
+
+              </div>
+            </button>
+            
+            <div class=" mt-[25px] w-[800px] h-[100vh] pb-[25px] bg-[#163020] rounded-t-[30px]">
+                  <button onclick="RefreshMegallok()" class="active:scale-95 hover:scale-[1.01]  w-full h-[150px] bg-[#3D5444] rounded-t-[30px]  flex items-center justify-center"><p class="text-white font-[Museo] text-[55px]">Megállók</p></button>
+
+                  <div id="megallo_holder" class="w-[800px]  h-[80vh] mt-[25px] flex overflow-y-scroll  overflow-y-visible  pb-[200px] overflow-x-hidden flex-col">
+                        <button onClick="" class='ml-[15px] mr-[15px]  flex-shrink-0 flex  w-95 h-[150px] bg-[#B6C4B6] rounded-[45px]'>
+                            <div class="w-[140px] h-full flex justify-center items-center ">
+                                <div class="w-[70px] h-[70px] rounded-full bg-white"></div>
+                            </div>
+                            <div class="w-full h-full flex justify-start items-center">
+                                <p class='text-white font-[Museo] text-[40px]'>Mosnita Citry</p>
+
+                            </div>
+                        </button>
+                        <div class="flex-shrink-0  w-full h-[80px] ">
+                            <div class="ml-[63px] w-[20px] h-full bg-[#46FFF4]"></div>
+                        </div>
+                       
+                        
+                        
+
+
+
+                  </div>
+            </div>
+      </div>
+
+       
+
     </body>
 </html>
