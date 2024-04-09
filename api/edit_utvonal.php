@@ -12,8 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($nev != "")
     {
-        $sql = "UPDATE utvonalak SET nev = '$nev' WHERE id = $id";
-        if ($conn->query($sql) === TRUE) {
+        $sql = "UPDATE utvonalak SET nev = ? WHERE id = ?";
+        $p = mysqli_prepare($conn,$sql);
+        mysqli_stmt_bind_param($p,"si",$nev,$id);
+    
+        if (mysqli_stmt_execute($p)=== TRUE) {
             echo "Record inserted successfully";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -23,8 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($megallok != "")
     {
-        $sql = "UPDATE utvonalak SET megallok = '$megallok' WHERE id = $id";
-        if ($conn->query($sql) === TRUE) {
+        $sql = "UPDATE utvonalak SET megallok = ? WHERE id = ?";
+        $p = mysqli_prepare($conn,$sql);
+        mysqli_stmt_bind_param($p,"si",$megallok,$id);
+    
+        if (mysqli_stmt_execute($p)=== TRUE) {
             echo "Record inserted successfully";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;

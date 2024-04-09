@@ -45,6 +45,7 @@ function Buszok()
 function UpdateALL()
 {
 UpdateMegalloList(true);
+UpdateBuszLiszt();
 
 }
 UpdateALL();

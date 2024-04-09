@@ -1,11 +1,16 @@
 var map;
 var rectangle;
-
+var marker = null;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 45.7489, lng: 21.2087 }, // Timisoara, Romania
         zoom: 12
     });
+    _map = new google.maps.Map(document.getElementById('map_busz'), {
+        
+      center: { lat: 45.7489, lng: 21.2087 }, // Timisoara, Romania
+      zoom: 12
+  });
 
     rectangle = new google.maps.Rectangle({
         map: map,
@@ -122,4 +127,20 @@ function LoadGrid(lat1,lng1,lat2,lng2)
    
 }
 
-  
+function UpdateMapMarker(lat,lng)
+{
+  if(lat == null)return;
+    if(marker != null)
+    {
+        marker.setMap(null);
+
+    }
+
+    var coordinates = { lat: parseFloat(lat), lng: parseFloat(lng) }; // Example: New York City coordinates
+    console.log("coordinatas:",coordinates.lat);
+    marker = new google.maps.Marker({
+            position:coordinates,
+            map:_map
+    });
+    _map.setCenter(marker.getPosition());
+}

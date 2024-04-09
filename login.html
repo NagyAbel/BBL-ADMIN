@@ -1,0 +1,20 @@
+<html>
+    <link rel="stylesheet" href="src/output.css">
+
+    <body class="bg-[#184E77]   content-start items-center">
+        <div class="w-100 h-[100px] flex items-center flex-col">
+            <p class=" w-[220px] mt-[30px] h-[60px] rounded-[10px] p-[10px] bg-[#6daad9] text-white font-medium text-[30px]">ADMIN PANEL</p>
+
+        </div>
+        <div class=" w-100 h-100 flex items-center flex-col ">
+            <form class="items-center flex flex-col " action="your_backend_script.php" method="POST">
+                <input id="username" placeholder="Felhasznalonev..." type="text"     maxlength="25" class="bg-[#1c4a58] text-white p-2 rounded-[10px] m-3 outline-none font-medium text-[30px]">
+    
+                <input id="password" placeholder="Jelszo..." type="password"     maxlength="25" class="bg-[#1c4a58] text-white p-2 rounded-[10px] m-3 outline-none font-medium text-[30px]">
+    
+                <input class="font-medium text-[30px] text-white w-[150px] h-[50px] bg-[#6daad9] rounded-[10px] " type="submit" value="Belepes">
+            </form> 
+            <div><p id="error" class="text-white font-medium text-[20px]">------</p></div>
+        </div>
+    </body>
+</html>

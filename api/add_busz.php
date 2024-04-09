@@ -4,13 +4,18 @@ include('connect.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve POST variables
     $nev = $_POST['nev'];
-    $megallok = $_POST['megallok'];
-    $indulasi_ido  = $_POST['indulasi_ido'];
-    // Perform SQL insertion
+    $hely = $_POST['hely'];
+    $utvonal = $_POST['utvonal'];
+    $prev_megallo  = $_POST['prev_megallo'];
+    $current_megallo = $_POST['current_megallo'];
 
-    $sql = "INSERT INTO utvonalak(nev,megallok,indulasi_ido) VALUES (?,?,?)";
+
+    // Perform SQL insertion
+    //$sql = "INSERT INTO buszok (nev,utvonal,hely,prev_megallo,current_megallo) VALUES ('$nev', '$utvonal','$hely','$prev_megallo','$current_megallo')";
+    $sql = "INSERT INTO buszok (nev,utvonal,hely,prev_megallo,current_megallo) VALUES (?,?,?,?,?)";
+
     $p = mysqli_prepare($conn,$sql);
-    mysqli_stmt_bind_param($p,'sss',$nev,$megallok,$indulasi_ido);
+    mysqli_stmt_bind_param($p,"sssss",$nev,$utvonal,$hely,$prev_megallo,$current_megallo);
 
     if (mysqli_stmt_execute($p) === TRUE) {
         echo "Record inserted successfully";

@@ -4,15 +4,12 @@ include('connect.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve POST variables
     $nev = $_POST['nev'];
-    $hely = $_POST['hely'];
     $id = $_POST['id'];
-
     if($nev != "")
     {
-        $sql = "UPDATE megallok SET nev = ? WHERE id = ?";
+        $sql = "UPDATE buszok SET nev = ? WHERE id = ?";
         $p = mysqli_prepare($conn,$sql);
         mysqli_stmt_bind_param($p,"si",$nev,$id);
-
         if (mysqli_stmt_execute($p) === TRUE) {
             echo "Record inserted successfully";
         } else {
@@ -20,21 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
     }
-
-    if($hely != "")
-    {
-        $sql = "UPDATE megallok SET hely = ? WHERE id = ?";
-        $p = mysqli_prepare($conn,$sql);
-        mysqli_stmt_bind_param($p,"si",$hely,$id);
-
-        if (mysqli_stmt_execute($p) === TRUE) {
-            echo "Record inserted successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-    }
      
-    }
+ }
 
  else {
     echo "Invalid request method. This script only supports POST requests.";

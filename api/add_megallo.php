@@ -7,9 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hely = $_POST['hely'];
 
     // Perform SQL insertion
-    $sql = "INSERT INTO megallok (nev, hely) VALUES ('$nev', '$hely')";
+    //$sql = "INSERT INTO megallok (nev, hely) VALUES ('$nev', '$hely')";
+    $sql = "INSERT INTO megallok (nev,hely) VALUES (?,?)";
 
-    if ($conn->query($sql) === TRUE) {
+    $p = mysqli_prepare($conn,$sql);
+    mysqli_stmt_bind_param($p,"ss",$nev,$hely);
+    if (mysqli_stmt_execute($p) === TRUE) {
         echo "Record inserted successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

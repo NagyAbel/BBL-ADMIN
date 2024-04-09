@@ -6,8 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
 
     
-        $sql = "DELETE FROM utvonalak Where id = '$id' ";
-        if ($conn->query($sql) === TRUE) {
+        $sql = "DELETE FROM utvonalak Where id = ? ";
+        $p = mysqli_prepare($conn,$sql);
+        mysqli_stmt_bind_param($p,"i",$id);
+    
+        if (mysqli_stmt_execute($p) === TRUE) {
             echo "Deleted Utvonal: $id";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
