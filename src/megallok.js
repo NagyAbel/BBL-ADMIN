@@ -32,7 +32,7 @@ function UpdateMegalloList(force=true)
     var a = document.getElementById("megallo_holder");
     var b = document.getElementById("megallo_holder_utvonal");
     var name = "";
-    var button = "<button class='hover:scale-[1.05] scroll-ml-6 snap-start bg-[#0628325a] px-4 py-1  rounded-[10px] text-white m-3'><p class='text-[35px]'>"+ name + "</p></button>";
+    var button = "<button class='hover:scale-[1.05] scroll-ml-6 snap-start bg-[#798B7D] px-4 py-1  rounded-[10px] text-white m-3'><p class='text-[35px] font-[Museo]'>"+ name + "</p></button>";
    
     fetch('api/get_megallo_list.php')
     .then(response => {
@@ -50,8 +50,8 @@ function UpdateMegalloList(force=true)
             var megallo = new Megallo(entry.nev,entry.hely,entry.id);
             _megallok.push(megallo);
             name = megallo.name;
-            var button = "<button id='"+i+"' onClick='LoadMegallo("+i+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
-            var button2 = "<button id='"+i+"|2' onClick='SelectMegalloForSwap("+i+",2"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
+            var button = "<button id='"+i+"' onClick='LoadMegallo("+i+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#798B7D] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[15px] font-[Museo]'>"+ name + "</p></button>";
+            var button2 = "<button id='"+i+"|2' onClick='SelectMegalloForSwap("+i+",2"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#798B7D] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[15px] font-[Museo]'>"+ name + "</p></button>";
 
             a.innerHTML+=button;
             b.innerHTML+=button2;
@@ -66,7 +66,7 @@ function UpdateMegalloList(force=true)
 
     })
 
-    //UpdateUtvonalList(megallok);
+    //UpdateUtvonalList(megallok);bg
 
 
 }
@@ -225,6 +225,7 @@ fetch('api/delete_megallo.php', {
     loaded_id = -1;
     console.log(result);
     UpdateMegalloList();
+    UpdateMegalloFromUtvonal(-1);
 
 })
 .catch(error => {
@@ -256,7 +257,12 @@ function GetMegallokFromString(data,m_list)
                 _megallok.push(new_megallo);
             }else if(element != "")
             {
-                _megallok.push(GetMegalloFromID(m_list,element));
+                var _megallo = GetMegalloFromID(m_list,element);
+                if(_megallo != null)
+                {
+                    _megallok.push(_megallo);
+
+                }
             }
         })
     
@@ -293,3 +299,4 @@ function GetStringFromMegallo(data)
 
     return s;
 }
+

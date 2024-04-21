@@ -39,7 +39,7 @@ function UpdateBuszLiszt()
             var busz = new Busz(entry.id,entry.nev,entry.utvonal,entry.hely,entry.prev_megallo,entry.current_megallo);
             _buszok.push(busz);
             name = busz.name;
-            var button = "<button id='busz"+i+"' onClick='LoadBusz("+i+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
+            var button = "<button id='busz"+i+"' onClick='LoadBusz("+i+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[190px] h-[50px] bg-[#798B7D] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[15px] font-[Museo]'>"+ name + "</p></button>";
 
             a.innerHTML+=button;
            

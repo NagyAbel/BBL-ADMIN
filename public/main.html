@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="../src/output.css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="src/map.js" defer></script>
         <script src="src/utvonalak.js" defer></script>
         <script src="src/megallok.js" defer></script>
         <script src="src/data.js" defer></script>
@@ -37,9 +38,19 @@
             </button>
             
             <div class=" mt-[25px] w-[800px] h-[100vh] pb-[25px] bg-[#163020] rounded-t-[30px]">
-                  <button onclick="RefreshMegallok()" class="active:scale-95 hover:scale-[1.01]  w-full h-[150px] bg-[#3D5444] rounded-t-[30px]  flex items-center justify-center"><p class="text-white font-[Museo] text-[55px]">Megállók</p></button>
+                  <div  class="  w-full h-[150px] bg-[#3D5444] rounded-t-[30px]  flex items-center justify-center">
+                    <button onclick="RefreshMegallok()" class="active:scale-95 hover:scale-[1.01] w-[250px] h-full flex justify-start items-center">
+                    <img  src="static/refresh.png" class=" w-[85px] h-[85px]" >
+                    </button>
+                    <p class=" text-white font-[Museo] text-[55px]">Megállók</p>
+                    <div class="w-[250px] h-full flex items-center justify-end ">
+                         <button onclick="ToggleMap()" class="w-[85px] h-[85px] active:scale-95 hover:scale-[1.01]  ">
+                                <img src="static/map.png" class="w-full h-full">
+                         </button>
+                    </div>
+                </div>
 
-                  <div id="megallo_holder" class="w-[800px]  h-[80vh] mt-[25px] flex overflow-y-scroll  overflow-y-visible  pb-[200px] overflow-x-hidden flex-col">
+                  <div id="megallo_holder" class=" w-[800px]  h-[80vh] mt-[25px] flex overflow-y-scroll  overflow-y-visible  pb-[200px] overflow-x-hidden flex-col">
                         <button onClick="" class='ml-[15px] mr-[15px]  flex-shrink-0 flex  w-95 h-[150px] bg-[#B6C4B6] rounded-[45px]'>
                             <div class="w-[140px] h-full flex justify-center items-center ">
                                 <div class="w-[70px] h-[70px] rounded-full bg-white"></div>
@@ -59,10 +70,14 @@
 
 
                   </div>
+
+                  <div id="map_holder" class=" hidden w-[800px] h-[80vh] max-h-[800px] bg-white">
+
+                  </div>
             </div>
       </div>
 
        
-
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPSJR3gOUrSEfOJPHXndxe58_MDMhVdnY&libraries=places&callback=initMap&loading=async"></script>
     </body>
 </html>

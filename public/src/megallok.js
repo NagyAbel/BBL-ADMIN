@@ -14,6 +14,8 @@ megallo_ui_list = [];
 function DeselectUtvonal()
 {
     loaded_utvonal  = -1;
+        ToggleMap(true);
+    
     var main = document.getElementById("MAIN");
     var megallo_site = document.getElementById("MEGALLO");
     main.classList.toggle("hidden",false);
@@ -75,8 +77,11 @@ function GetMegalloColors(_utvonal_id)
     .then(result=>{
         console.log(result);
         var megalloColors = [];
+        ClearMarkers();
         for (var i = 0; i < result.length; i++) {
+
             var entry = result[i];
+            PlaceMarker(entry.hely);
 
            if(entry.current_megallo != "-1" && entry.current_megallo != "" && entry.current_megallo != "x")
            {

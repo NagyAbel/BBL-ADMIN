@@ -1,4 +1,3 @@
 <?php
- echo "Tesszt";
- include "index.html";
+ header("Location: public/main.php");
 ?>

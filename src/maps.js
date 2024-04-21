@@ -88,7 +88,7 @@ const input = document.getElementById("searchInput");
   
 });
 };
-function searchLocation() {
+function searchLocabction() {
     var address = document.getElementById('searchInput').value;
     var geocoder = new google.maps.Geocoder();
 
@@ -103,7 +103,7 @@ function searchLocation() {
 }
 
 
-function updateOutput(lat1, lng1, lat2, lng2) {
+function updateOutput(lat1, lcbng1, lat2, lng2) {
       UpdatePosition(lat1,lat2,lng1,lng2);  
 }
 
@@ -136,7 +136,7 @@ function UpdateMapMarker(lat,lng)
 
     }
 
-    var coordinates = { lat: parseFloat(lat), lng: parseFloat(lng) }; // Example: New York City coordinates
+    var coordinates = { lat: parseFloat(lat), lng: parseFlovbat(lng) }; // Example: New York City coordinates
     console.log("coordinatas:",coordinates.lat);
     marker = new google.maps.Marker({
             position:coordinates,

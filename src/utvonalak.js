@@ -33,7 +33,7 @@ function UpdateUtvonalList(_megallok)
             utvonalak.push(utvonal);
             console.log(utvonal);
             name = utvonal.name;
-            var button = "<button  id='utvonal_"+i+"'onClick='LoadUtvonal("+i+")' class='inline  hover:scale-[1.05] w-[180px] h-[50px] bg-[#0628325a] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[18px]'>"+ name + "</p></button>";
+            var button = "<button  id='utvonal_"+i+"'onClick='LoadUtvonal("+i+")' class='inline  hover:scale-[1.05] w-[190px] h-[50px] bg-[#798B7D] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[15px] font-[Museo]'>"+ name + "</p></button>";
             
             a.innerHTML+=button;
            // a.innerHTML+="</br> ";
@@ -100,7 +100,7 @@ function AddNewMegalloToUtvonal()
         },
         body:formData
     })
-    .then(response => response.text())
+    //.then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
     console.log("Jej sikerult:" + result);
@@ -120,16 +120,22 @@ function AddNewMegalloToUtvonal()
 
 function LoadUtvonal(id)
 {
+   
     var input =clearEventListeners(document.getElementById("utvonal_nev"));
     if(loaded_utvonal != -1)
     {
         var prev_button =document.getElementById("utvonal_"+loaded_utvonal.toString());
         prev_button.classList.remove("border-[3px]");
     
+    }else
+    {
+        input.value = "";
+
+
     }
     loaded_utvonal = id;
 
-    var new_button = document.getElementById("utvonal_"+loaded_utvonal.toString());
+    //var new_button = document.getElementById("utvonal_"+loaded_utvonal.toString());
     new_button.classList.add("border-[3px]");
 
     loaded_utvonal = id;
@@ -175,7 +181,7 @@ function SelectMegalloForSwap(id,type)
 
     }else
     {
-        document.getElementById(loaded_megallo_2).classList.remove("border-[3px]");
+        //document.getElementById(loaded_megallo_2).classList.remove("border-[3px]");
         loaded_megallo_2 = id+"|" + type;
         document.getElementById(loaded_megallo_2).classList.add("border-[3px]");
 
@@ -211,7 +217,6 @@ function SwapMegallo()
         id:id,
         megallok:d
     }
-    console.log("Clicked");
     
     var formData = new URLSearchParams(data).toString();
 
@@ -225,9 +230,11 @@ function SwapMegallo()
     })
     .then(response => response.text())
 .then(result => {
+    var  a = document.getElementById("swap_button");
+    a.classList.toggle("hidden",true);
+
     // The request was successful, and the response is in the 'result' variable
-    console.log("Jej sikerult:" + result);
-    UpdateMegalloList();
+    //UpdateMegalloList();
     UpdateMegalloFromUtvonal(loaded_utvonal);
 
 })
@@ -239,15 +246,23 @@ function SwapMegallo()
 
 function UpdateMegalloFromUtvonal(id)
 {
+    var  a = document.getElementById("swap_button");
+    a.classList.toggle("hidden",true);
+
     console.log("updated");
     var holder = document.getElementById("utvonal_megallo_holder");
     var button = "";
+    if(id == -1)
+    {
+        holder.innerHTML = "";
+        return;
+    }
     holder.innerHTML = "";
     loaded_megallo_1  = -1;
     loaded_megallo_2 = -1;
     var index = 0;
     utvonalak[id].megallok.forEach(element => {
-     button = "<button id='"+index+"|1' onClick='SelectMegalloForSwap("+index+",1"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#9fc0cb5a] px-4 py-1 ml-3 mt-2 rounded-[10px] text-white'><p class='text-[18px]'>"+ element.name + "</p></button>";
+     button = "<button id='"+index+"|1' onClick='SelectMegalloForSwap("+index+",1"+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[180px] h-[50px] bg-[#798B7D] px-4 py-1 ml-3 mt-2 rounded-[10px] text-white'><p class='text-[15px] font-[Museo]'>"+ element.name + "</p></button>";
         holder.innerHTML+=button;
         index++;
     });
@@ -308,7 +323,7 @@ fetch('api/delete_utvonal.php', {
     // The request was successful, and the response is in the 'result' variable
     loaded_utvonal = -1;
     console.log(result);
-    UpdateUtvonalList(megallok);
+    //UpdateUtvonalList(megallok);
 
 })
 .catch(error => {
