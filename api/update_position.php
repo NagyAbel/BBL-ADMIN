@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if ($conn->query($sql) === TRUE) {
-            echo "Update Position: $busz_id";
+            echo "$_hely:  Update Position: $busz_id";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -36,9 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-$test_pos = "45.744303|21.230790|";
 //GetMegalloFromID(3);
-echo(GetMegalloFromPosition($test_pos,'1'));
 //Returns the name of the megallo if  the position is within a megallo else returns -1
 function GetMegalloFromPosition($pos,$utvonal)
 {
@@ -57,7 +55,6 @@ function GetMegalloFromPosition($pos,$utvonal)
 
     //echo($megallok[0]['hely']);
 
-    echo(MegalloContainsPos($pos,$megallok[0]['hely']));
 
 }
 //
@@ -83,11 +80,7 @@ function MegalloContainsPos($pos,$m_pos)
     $minLng = strToFloat($m_pos_list[3]);
     $maxLng = strToFloat($m_pos_list[2]);
 
-    echo($minLat." : ".$maxLat." : ".$minLng." : ".$maxLng);
-    echo("</br>");
-
-    echo($lat." : ".$long);
-    echo("</br>");
+   
   if ($lat >= $minLat && $lat <= $maxLat && $long >= $minLng && $long <= $maxLng) {
         return true;
     } else {
@@ -127,7 +120,6 @@ function GetMegalloFromID($megallo_id)
 {
     //include('connect.php');
     global $conn;
-    echo($megallo_id);
     $sql = "SELECT * FROM megallok WHERE megallok.id =$megallo_id;";
     $result = $conn->query($sql);
 
