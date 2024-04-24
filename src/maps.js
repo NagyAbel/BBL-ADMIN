@@ -136,7 +136,7 @@ function UpdateMapMarker(lat,lng)
 
     }
 
-    var coordinates = { lat: parseFloat(lat), lng: parseFlovbat(lng) }; // Example: New York City coordinates
+    var coordinates = { lat: parseFloat(lat), lng: parseFloat(lng) }; // Example: New York City coordinates
     console.log("coordinatas:",coordinates.lat);
     marker = new google.maps.Marker({
             position:coordinates,
