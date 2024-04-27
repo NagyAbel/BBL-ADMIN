@@ -42,14 +42,17 @@ function GetMegalloFromPosition($pos,$utvonal)
 {
     $megallok = GetMegalloListFromUtvonal($utvonal);
     //$megallo_list = 
-
-    foreach($megallok as $m)
+    if($megallok != null)
     {
-        if(MegalloContainsPos($pos,$m['hely']))
+        foreach($megallok as $m)
         {
-            return $m['id'];
+            if(MegalloContainsPos($pos,$m['hely']))
+            {
+                return $m['id'];
+            }
         }
     }
+  
 
     return "-1";
 
@@ -103,6 +106,7 @@ function GetMegalloListFromUtvonal($utvonal_id)
     }
     $m_string = str_replace('|',',', $data[0]['megallok']);
     $megallok_string = substr($m_string,0,-1);
+    if(strlen($megallok_string)!=0){
 
     $sql="SELECT * FROM megallok WHERE id IN ($megallok_string)";
     $result = $conn->query($sql);
@@ -110,9 +114,13 @@ function GetMegalloListFromUtvonal($utvonal_id)
     {
         $megallok[] = $row;
     }
-   
-
     return $megallok;
+
+    }else
+    {
+        return null;
+    }
+
 }
 
 //Not using this one right now
