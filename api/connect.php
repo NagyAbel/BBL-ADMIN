@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+error_reporting(E_ERROR | E_PARSE);
+//ini_set('display_errors', 0);
 $servername = "localhost"; // Change this to your MySQL server's hostname or IP address
 $username = "root"; // Change this to your MySQL username
 $password = ""; // Change this to your MySQL password
