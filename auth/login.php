@@ -26,6 +26,13 @@ include("../api/connect.php");
 if ($_SERVER['REQUEST_METHOD'] != 'POST') exit;
 if ( !isset($_POST['nev'], $_POST['jelszo']) || $_POST['nev']=='' || $_POST['jelszo'] == '' ) {
 	// Could not get the data that should have been sent.
+    session_start();
+
+    $_SESSION['loggedin'] = FALSE;
+    $_SESSION['name'] ="";
+    $_SESSION['password']="";
+    $_SESSION['id'] = "";
+
 	exit('<div class="flex items-center justify-center"><p id="error" class="text-white font-medium text-[20px]">Hiba: Üres mezők!</p></div>');
 }
 
@@ -41,13 +48,27 @@ if ($stmt = $conn->prepare('SELECT id, jelszo FROM felhasznalok WHERE nev = ?'))
             session_regenerate_id();
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['nev'];
+            $_SESSION['password']=$password;
             $_SESSION['id'] = $id;
             echo '<div class="flex items-center justify-center"><p id="error" class="text-white font-medium text-[20px]">Siker!</p></div>';
             header("Location: ../index.php");
         } else {
+            session_start();
+
+            $_SESSION['loggedin'] = FALSE;
+            $_SESSION['name'] ="";
+            $_SESSION['password']="";
+            $_SESSION['id'] = "";
+
             // Incorrect password
         }
     } else {
+        session_start();
+
+        $_SESSION['loggedin'] = FALSE;
+        $_SESSION['name'] ="";
+        $_SESSION['password']="";
+        $_SESSION['id'] = "";
         // Incorrect username
         echo '<div class="flex items-center justify-center"><p id="error" class="text-white font-medium text-[20px]">Hiba: Felhasználónév vagy jelszó nem helyes!</p></div>';
     }

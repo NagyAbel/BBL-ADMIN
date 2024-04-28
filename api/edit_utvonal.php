@@ -1,7 +1,16 @@
 <?php
 include('connect.php');
-
+include('acces.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //Checks if the admin is logged in
+    session_start();
+    if(!$_SESSION["loggedin"])exit;
+    $user = $_SESSION["name"];
+    $pass = $_SESSION["password"];
+    if(!VerifyByAdminAccount($user,$pass))exit;
+
+   
+   
     // Retrieve POST variables
     $nev = $_POST['nev'];
     $megallok =$_POST['megallok'];

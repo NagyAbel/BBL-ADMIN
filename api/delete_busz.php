@@ -1,11 +1,17 @@
 <?php
 include('connect.php');
-
+include('acces.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve POST variables
     $id = $_POST['id'];
 
-    
+     //Checks if the admin is logged in
+     session_start();
+     if(!$_SESSION["loggedin"])exit;
+     $user = $_SESSION["name"];
+     $pass = $_SESSION["password"];
+     if(!VerifyByAdminAccount($user,$pass))exit;
+ 
         $sql = "DELETE FROM buszok Where id = ? ";
 
         $p = mysqli_prepare($conn,$sql);

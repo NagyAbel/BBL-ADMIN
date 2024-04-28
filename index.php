@@ -17,8 +17,10 @@
 
     <script src="src/utvonalak.js" defer></script>
     <script src="src/buszok.js" defer></script>
-    
+
     <script src="src/megallok.js" defer></script>
+    <script src="src/settings.js" defer></script>
+
     <script src="src/main.js" defer></script>
 
 
@@ -175,25 +177,29 @@
         <div class="bg-[#163020] w-[800px] rounded-[30px] h-[450px] ml-30 mr-30 flex">
 
 
-        <div class="ml-[35px] w-[300px] h-[450px] flex items-start justify-center">
+        <div class="ml-[35px] w-[350px] h-[450px] flex items-start justify-center">
 
-        <div class=" mt-[25px] flex flex-col  w-[350px]   ml-1 h-[300px] grid-flow-col grid-cols-1 ">
+        <div class=" mt-[25px] flex flex-col  w-[350px]   ml-1 h-[250px] grid-flow-col grid-cols-1 ">
                    <div class="w-[350px]  flex">
-                    <div class="rounded-[20px] flex bg-[#3D5444]   w-[220px] h-[50px] justify-center">
-                        <p class="text-[25px] mt-1.5 text-white font-[Museo]">Követő Kulcsok</p>
+                    <div class="rounded-[20px] flex bg-[#3D5444]   w-[150px] h-[50px] justify-center items-center">
+                        <p class="text-[18px]  text-white font-[Museo]">Követő Kulcsok</p>
                     </div>
                     <div class="ml-1 w-[40px] hover:scale-1.01 active:scale-95  rounded-[13px] bg-[#3D5444] content-center flex">
-                        <button onclick = "AddNewMegalloToUtvonal()" class="h-max "><img class="ml-[6px] mt-[10px] w-[30px] h-[30px]" src="static/plus.png" ></button>
+                        <button onclick = "AddDriverKey()" class="h-max "><img class="ml-[6px] mt-[10px] w-[30px] h-[30px]" src="static/plus.png" ></button>
                     </div>
                     <div class="ml-1 w-[40px] hover:scale-1.01 active:scale-95  rounded-[13px] bg-[#3D5444] content-center flex">
-                        <button onclick = "DeleteMegalloFromUtvonal()" class="h-max "><img class="ml-[6px] mt-[10px] w-[30px] h-[30px]" src="static/delete_white.png" ></button>
+                        <button onclick = "DeleteDriverKey()" class="h-max "><img class="ml-[6px] mt-[10px] w-[30px] h-[30px]" src="static/delete_white.png" ></button>
+
+                    </div>
+                    <div id="download" class="hidden ml-1 w-[40px] hover:scale-1.01 active:scale-95  rounded-[13px] bg-[#3D5444] content-center flex">
+                        <button onclick = "Download()" class="h-max "><img class="ml-[6px] mt-[10px] w-[30px] h-[30px]" src="static/download2.png" ></button>
 
                     </div>
                     </div>
-                    <div id="utvonal_megallo_holder" class=" bg-[#3D5444] rounded-[20px] mt-[5px] w-[300px] h-[300px] overflow-y-scroll overflow-x-hidden">
+                    <div id="driver_key_holder" class=" bg-[#3D5444] rounded-[20px] mt-[5px] w-[235px] h-[300px] p-[3px] overflow-y-scroll overflow-x-hidden">
                      
-                        
-                   
+                    <button id='busz"+i+"' onClick='LoadBusz("+i+")' class='inline border-solid  border-red  hover:scale-[1.05] w-[200px] h-[50px] flex items-center justify-start bg-[#798B7D]  m-[5px] rounded-[10px] text-white'><img class="w-[25px] h-[25px] ml-[5px] mr-[10px]" src="static/download2.png"><p class='text-[15px] font-[Museo]'>Kulcs#132</p></button>
+
                    
                       
 

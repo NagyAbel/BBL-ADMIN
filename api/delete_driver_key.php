@@ -1,23 +1,28 @@
 <?php
 include('connect.php');
-include('acces.php');
+include("acces.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve POST variables
     $id = $_POST['id'];
 
-     //Checks if the admin is logged in
-     session_start();
-     if(!$_SESSION["loggedin"])exit;
-     $user = $_SESSION["name"];
-     $pass = $_SESSION["password"];
-     if(!VerifyByAdminAccount($user,$pass))exit;
- 
-        $sql = "DELETE FROM megallok Where id = ? ";
+    session_start();
+    
+    
+    if($_SESSION["loggedin"])
+    {
+       
+        $user = $_SESSION["name"];
+        $pass = $_SESSION["password"];
+    
+    if(VerifyByAdminAccount($user,$pass))
+    {
+
+        $sql = "DELETE FROM kulcsok Where id = ? ";
         $p = mysqli_prepare($conn,$sql);
         mysqli_stmt_bind_param($p,"i",$id);
-
+    
         if (mysqli_stmt_execute($p) === TRUE) {
-            echo "Deleted Megallo: $id";
+            echo "Deleted Key: $id";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -33,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Close the database connection
+    }
+}
 $conn->close();
 
 ?>

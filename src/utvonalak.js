@@ -135,7 +135,7 @@ function LoadUtvonal(id)
     }
     loaded_utvonal = id;
 
-    //var new_button = document.getElementById("utvonal_"+loaded_utvonal.toString());
+    var new_button = document.getElementById("utvonal_"+loaded_utvonal.toString());
     new_button.classList.add("border-[3px]");
 
     loaded_utvonal = id;
@@ -181,7 +181,7 @@ function SelectMegalloForSwap(id,type)
 
     }else
     {
-        //document.getElementById(loaded_megallo_2).classList.remove("border-[3px]");
+        document.getElementById(loaded_megallo_2).classList.remove("border-[3px]");
         loaded_megallo_2 = id+"|" + type;
         document.getElementById(loaded_megallo_2).classList.add("border-[3px]");
 
@@ -323,6 +323,7 @@ fetch('api/delete_utvonal.php', {
     // The request was successful, and the response is in the 'result' variable
     loaded_utvonal = -1;
     console.log(result);
+    UpdateMegalloList();
     //UpdateUtvonalList(megallok);
 
 })

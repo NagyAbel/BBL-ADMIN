@@ -1,11 +1,25 @@
 <?php
 include('connect.php');
-
+include('acces.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve POST variables
+
+
+    session_start();
+    $kulcs = $_POST['kulcs'];
+    if(!VerifyByDriverKey($kulcs))
+    {
+        echo("Wrong API Key:".$kulcs);
+
+        exit;
+    }
+
+
+
     $busz_id = $_POST['id'];
     $_hely =  $_POST['hely'];
     $_utvonal = $_POST['utvonal'];
+    
 
         $current_megallo = GetMegalloFromPosition($_hely,$_utvonal);
     

@@ -103,7 +103,7 @@ function searchLocabction() {
 }
 
 
-function updateOutput(lat1, lcbng1, lat2, lng2) {
+function updateOutput(lat1, lng1, lat2, lng2) {
       UpdatePosition(lat1,lat2,lng1,lng2);  
 }
 
