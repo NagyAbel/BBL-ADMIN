@@ -4,3 +4,5 @@ use data;
 create table  buszok (id int(11) PRIMARY KEY AUTO_INCREMENT , nev varchar(40), hely varchar(128), prev_megallo varchar(15), current_megallo varchar(15));
 create table megallok (id int(11) PRIMARY KEY AUTO_INCREMENT, nev varchar(125),hely varchar(255));
 create table utvonalak (id int(11) PRIMARY KEY AUTO_INCREMENT, nev varchar(125), megallok varchar(512), indulasi_ido time);
+create table kulcsok(id int(11) AUTO_INCREMENT PRIMARY KEY,nev varchar(50),kulcs varchar(255),tipus varchar(50));
+create table felhasznalok(id int(11) PRIMARY KEY AUTO_INCREMENT,nev varchar(50),jelszo varchar(255));
