@@ -24,5 +24,7 @@ function LoadUtvonal(id)
     megallo_site.classList.toggle("hidden",false)
     var name = document.getElementById("utvonal_nev");
     name.innerText = utvonalak[id].name;
-    GetMegalloColors(id);
+    StartMegallok(id);
 }
+
+

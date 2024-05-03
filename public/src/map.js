@@ -22,7 +22,7 @@ function ToggleMap(force=false)
     if(force){
         map_holder.classList.toggle("hidden",true);
         megallo_holder.classList.toggle("hidden",false);
-        map_enabled =false;
+        map_enabled =true;
         ClearMarkers();
 
     }else

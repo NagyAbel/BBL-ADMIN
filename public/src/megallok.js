@@ -9,13 +9,15 @@ class megallo_ui{
 }
 var normal_color = "#B6C4B6";
 var active_color= "#46FFF4";
-
+var loop;
+var id;
 megallo_ui_list = [];
 function DeselectUtvonal()
 {
     loaded_utvonal  = -1;
         ToggleMap(true);
-    
+        StopMegallok();
+
     var main = document.getElementById("MAIN");
     var megallo_site = document.getElementById("MEGALLO");
     main.classList.toggle("hidden",false);
@@ -48,8 +50,20 @@ function LoadMegallok(_utvonal,_colors)
 }
 
 
+function StartMegallok(id)
+{
+    GetMegalloColors(id);
+    loop = setInterval(GetMegalloColors,5000,id);
+}
+function StopMegallok()
+{
+    clearInterval(loop);
+}
+
+
 function GetMegalloColors(_utvonal_id)
 {
+    console.log("Updated Megallok");
     var data = {
         utvonal_id:utvonalak[_utvonal_id].id
     }
