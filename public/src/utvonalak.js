@@ -8,7 +8,7 @@ function UpdateUtvonalUI(utvonalak)
     var id = 0;
     utvonalak.forEach(element => {
         var name = element.name;
-        button = "<button onClick=LoadUtvonal("+id+") class='ml-[15px] mr-[15px] active:scale-95 hover:scale-[1.01] flex-shrink-0  inline mb-[25px] w-95 h-[150px] bg-[#798B7D] rounded-[10px]'><p class='text-white font-[Museo] text-[40px]'>"+name+"</p></button>";
+        button = "<button onClick=LoadUtvonal("+id+") class='ml-[15px] mr-[15px] active:scale-95 hover:scale-[1.01] flex-shrink-0  inline mb-[25px] w-90% h-[150px] bg-[#798B7D] rounded-[10px]'><p class='text-white font-[Museo] text-[40px]'>"+name+"</p></button>";
         id++;
 
         holder.innerHTML+=button;

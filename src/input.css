@@ -4,8 +4,7 @@
 
 @font-face {
     font-family: 'Museo';
-    src: url('src/MuseoModerno-SemiBold.ttf') format('woff'),
-         url('MuseoModerno-SemiBold.ttf') format('woff');
+    src:url('MuseoModerno-SemiBold.ttf') format('woff');
     /* Add more format variations if needed */
 }
 

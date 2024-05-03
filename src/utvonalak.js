@@ -23,15 +23,12 @@ function UpdateUtvonalList(_megallok)
         return response.json();
     })
     .then(result=>{
-       // console.log("UPDATE MEGALLOK: "+ _megallok[0].name);
         a.innerHTML = "";
         utvonalak = [];
-        console.log(_megallok + "   :MEGALLOK");
         for (var i = 0; i < result.length; i++) {
             var entry = result[i];
             var utvonal = new Utvonal(entry.nev,entry.id, GetMegallokFromString(entry.megallok,_megallok));
             utvonalak.push(utvonal);
-            console.log(utvonal);
             name = utvonal.name;
             var button = "<button  id='utvonal_"+i+"'onClick='LoadUtvonal("+i+")' class='inline  hover:scale-[1.05] w-[190px] h-[50px] bg-[#798B7D] px-4 py-1 m-[5px] rounded-[10px] text-white'><p class='text-[15px] font-[Museo]'>"+ name + "</p></button>";
             
@@ -63,7 +60,6 @@ function CreateUtvonal()
     .then(response => response.text())
     .then(result => {
         // The request was successful, and the response is in the 'result' variable
-        console.log(result);
         UpdateUtvonalList(megallok);
     
     })
@@ -76,7 +72,6 @@ function CreateUtvonal()
 
 function AddNewMegalloToUtvonal()
 {
-    console.log(loaded_utvonal);
     if(loaded_utvonal==-1)return;
     var id  = utvonalak[loaded_utvonal].id
 
@@ -88,7 +83,6 @@ function AddNewMegalloToUtvonal()
         id:id,
         megallok:d
     }
-    console.log("Clicked");
     
     var formData = new URLSearchParams(data).toString();
 
@@ -103,7 +97,6 @@ function AddNewMegalloToUtvonal()
     //.then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log("Jej sikerult:" + result);
     UpdateMegalloList(false);
 
     UpdateMegalloFromUtvonal(loaded_utvonal);
@@ -143,7 +136,6 @@ function LoadUtvonal(id)
     {
         UpdateUtvonalNev(id);
     });
-    console.log("Load utvonal: "+ loaded_utvonal);
     input.value = utvonalak[id].name;
     UpdateMegalloFromUtvonal(id);
     
@@ -249,7 +241,6 @@ function UpdateMegalloFromUtvonal(id)
     var  a = document.getElementById("swap_button");
     a.classList.toggle("hidden",true);
 
-    console.log("updated");
     var holder = document.getElementById("utvonal_megallo_holder");
     var button = "";
     if(id == -1)
@@ -290,7 +281,6 @@ function UpdateUtvonalNev(id)
     .then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log(result);
     UpdateUtvonalList(megallok);
 
 })
@@ -322,7 +312,6 @@ fetch('api/delete_utvonal.php', {
 
     // The request was successful, and the response is in the 'result' variable
     loaded_utvonal = -1;
-    console.log(result);
     UpdateMegalloList();
     //UpdateUtvonalList(megallok);
 
@@ -337,7 +326,6 @@ fetch('api/delete_utvonal.php', {
 function DeleteMegalloFromUtvonal()
 {
     if(loaded_utvonal==-1)return;
-    console.log(loaded_megallo_1);
     if(loaded_megallo_1 == -1)return;
 
     var id  = utvonalak[loaded_utvonal].id
@@ -350,7 +338,6 @@ function DeleteMegalloFromUtvonal()
         id:id,
         megallok:d
     }
-    console.log("Clicked");
     
     var formData = new URLSearchParams(data).toString();
 
@@ -365,7 +352,6 @@ function DeleteMegalloFromUtvonal()
     .then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log("Jej sikerult:" + result);
     UpdateMegalloList();
 
     UpdateMegalloFromUtvonal(loaded_utvonal);

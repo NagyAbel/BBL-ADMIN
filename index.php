@@ -7,14 +7,14 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>ADMIN</title>
     <link rel="stylesheet" href="src/output.css">
-
+    <link rel="Icon" type="image/png" href="static/icon.png"/>
     <script src="src/utvonalak.js" defer></script>
     <script src="src/buszok.js" defer></script>
 

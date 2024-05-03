@@ -19,7 +19,6 @@ class Busz
 function UpdateBuszLiszt()
 {
    
-    console.log("Updated List");
     var a = document.getElementById("busz_holder");
     var name = "";
     var button = "";
@@ -109,7 +108,6 @@ fetch('api/delete_busz.php', {
 
     // The request was successful, and the response is in the 'result' variable
     loaded_busz = -1;
-    console.log(result);
     UpdateBuszLiszt();
 
 })
@@ -144,7 +142,6 @@ function UpdateBuszNev(id)
     .then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log(result);
     UpdateBuszLiszt();
 
 })
@@ -175,7 +172,6 @@ fetch('api/add_busz.php', {
 .then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log(result);
     UpdateBuszLiszt();
 
 })
@@ -189,7 +185,6 @@ fetch('api/add_busz.php', {
 function GetHelyFromBusz(_busz)
 {
     var a = []
-    console.log(_busz);
 
     if(_busz.hely == "" || _busz.hely == "x")
     {

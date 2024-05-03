@@ -41,12 +41,10 @@ function PlaceMarker(busz)
 {
     if(!map_ready)return;
 
-  console.log("Place Marker: "+busz);
     var a = GetHelyFromBusz(busz);
     if(a[0] == null)return;
 
     var coordinates = { lat: parseFloat(a[0]), lng: parseFloat(a[1]) }; // Example: New York City coordinates
-    console.log("coordinatas:",coordinates.lat);
    var  marker = new google.maps.Marker({
             position:coordinates,
             map:_map
@@ -58,7 +56,6 @@ function PlaceMarker(busz)
 function GetHelyFromBusz(_busz)
 {
     var a = []
-    console.log(_busz);
 
     if(_busz == "" || _busz == "x")
     {

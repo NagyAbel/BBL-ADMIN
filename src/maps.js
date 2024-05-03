@@ -64,7 +64,6 @@ const input = document.getElementById("searchInput");
 
     places.forEach((place) => {
       if (!place.geometry || !place.geometry.location) {
-        console.log("Returned place contains no geometry");
         return;
       }
 
@@ -115,7 +114,6 @@ function LoadGrid(lat1,lng1,lat2,lng2)
         east: parseFloat(lat2),
         west: parseFloat(lng2)
     };
-    console.log(lat1 + " " + lng1 + " " + lat2 + " " + lng2);
 
 
     // Set new bounds for the rectangle
@@ -137,7 +135,6 @@ function UpdateMapMarker(lat,lng)
     }
 
     var coordinates = { lat: parseFloat(lat), lng: parseFloat(lng) }; // Example: New York City coordinates
-    console.log("coordinatas:",coordinates.lat);
     marker = new google.maps.Marker({
             position:coordinates,
             map:_map

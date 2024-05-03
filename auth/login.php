@@ -1,5 +1,7 @@
 <html>
     <link rel="stylesheet" href="../src/output.css">
+    <title>LOGIN</title>
+    <link rel="Icon" type="image/png" href="../static/icon.png"/>
 
     <body class="bg-[#304D30]   content-start items-center">
         <div class="w-100 h-[100px] flex items-center flex-col">

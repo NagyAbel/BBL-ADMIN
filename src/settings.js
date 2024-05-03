@@ -12,7 +12,6 @@ var kulcsok = []
 function LoadDriverKeys()
 {
     selected_driver_key = -1;
-    console.log("Updated List");
     var a = document.getElementById("driver_key_holder");
     var name = "";
     var button = "";
@@ -51,7 +50,6 @@ function AddDriverKey()
     var data = {
         name:  GetRandomKeyName(6)+kulcsok.length.toString()
     }
-    console.log(data.name);
     var formData = new URLSearchParams(data).toString();
 
     fetch('api/add_driver_key.php',{
@@ -62,11 +60,9 @@ function AddDriverKey()
         body:formData
     })
     .then(response =>{
-        console.log(response.text);
     })
     .then(result =>
     {
-        console.log(result);
         LoadDriverKeys();
     })
 }
@@ -112,11 +108,9 @@ function DeleteDriverKey()
         body:formData
     })
     .then(response =>{
-        console.log(response.text);
     })
     .then(result =>
     {
-        console.log(result);
         LoadDriverKeys();
     })
 }

@@ -22,13 +22,7 @@ var loaded_id = -1;
 
 function UpdateMegalloList(force=true)
 {
-    //Caching
-   // if(megallok.length != 0 && !force)
-   //{
-      //return megallok;
-        
-     // }
-    console.log("Updated List");
+    
     var a = document.getElementById("megallo_holder");
     var b = document.getElementById("megallo_holder_utvonal");
     var name = "";
@@ -59,7 +53,6 @@ function UpdateMegalloList(force=true)
             
         }
         megallok=_megallok;
-        console.log("Mukodik a megallo:" + megallok[0].name);
         UpdateUtvonalList(_megallok);
         return _megallok;
         
@@ -78,7 +71,6 @@ function UpdatePosition(lat1,lng1,lat2,lng2)
     id = loaded_id;
     
     megallok[id].pos =lat1+ "|" + lng1 + "|" + lat2 + "|" + lng2;
-    console.log(megallok[id].pos);
     var data = {
         nev:megallok[id].name,
         hely:megallok[id].pos,
@@ -97,7 +89,6 @@ function UpdatePosition(lat1,lng1,lat2,lng2)
     .then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log(result);
 
     
 })
@@ -107,7 +98,6 @@ function UpdatePosition(lat1,lng1,lat2,lng2)
 function UpdateMegalloNev(id)
 {
     megallok[id].name = document.getElementById("megallo_nev").value;
-    console.log("Stopped editing"+megallok[id].name);
     var data = {
         nev:megallok[id].name,
         hely:megallok[id].pos,
@@ -126,7 +116,6 @@ function UpdateMegalloNev(id)
     .then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log(result);
     UpdateMegalloList();
 
 })
@@ -163,7 +152,6 @@ function LoadMegallo(id)
     {
         UpdateMegalloNev(id);
     });
-    console.log("Loaded megallo: " + megallok[id].pos);
     if(megallok[id].pos != "x")
     {
         var pos = megallok[id].pos.split('|');
@@ -190,7 +178,6 @@ fetch('api/add_megallo.php', {
 .then(response => response.text())
 .then(result => {
     // The request was successful, and the response is in the 'result' variable
-    console.log(result);
     UpdateMegalloList();
 
 })
@@ -223,7 +210,6 @@ fetch('api/delete_megallo.php', {
 
     // The request was successful, and the response is in the 'result' variable
     loaded_id = -1;
-    console.log(result);
     UpdateMegalloList();
     UpdateMegalloFromUtvonal(-1);
 
@@ -242,8 +228,6 @@ function GetMegallokFromString(data,m_list)
     if(data == "")return [];
    // var m = UpdateMegalloList();
    //var m = UpdateMegalloList();
-    console.log("Data: " + data);
-    console.log(m_list);
     var _megallok = [];
     var list = data.split("|");
    
@@ -278,7 +262,6 @@ function GetMegalloFromID(_megallok,id)
 {
     var a = null;
     _megallok.forEach(element =>{
-        console.log("Element id: " + element.id);
         if(element.id ==id)
         {
              a=element;

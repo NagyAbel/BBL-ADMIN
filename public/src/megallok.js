@@ -33,8 +33,6 @@ function LoadMegallok(_utvonal,_colors)
         //46FFF4
         count++;
         var colors = GetColorFromID(_colors,element.id);
-        console.log("Dot COlor:" + colors.dot);
-        console.log("Line COlor:" + colors.line);
 
         var color = colors.dot;
         var line_color =colors.line;
@@ -57,7 +55,6 @@ function GetMegalloColors(_utvonal_id)
     }
     var formData = new URLSearchParams(data).toString();
 
-    console.log("Utvonal id:" + _utvonal_id);
     fetch(api+'api/get_busz_by_utvonal.php',
     {
         method: 'POST',
@@ -75,7 +72,6 @@ function GetMegalloColors(_utvonal_id)
         return response.json();
     })
     .then(result=>{
-        console.log(result);
         var megalloColors = [];
         ClearMarkers();
         for (var i = 0; i < result.length; i++) {
@@ -94,7 +90,6 @@ function GetMegalloColors(_utvonal_id)
             
         }
 
-        console.log(megalloColors);
         LoadMegallok(utvonalak[_utvonal_id],megalloColors);
         
         return megalloColors;

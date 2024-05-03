@@ -33,7 +33,6 @@ class Busz{
 
 function UpdateMegalloList()
 {
-    console.log("Megallok Frissitve");
    
    
     fetch(api+'api/get_megallo_list.php')
@@ -52,7 +51,6 @@ function UpdateMegalloList()
             
         }
         megallok=_megallok;
-        console.log("Mukodik a megallo:" + megallok[0].name);
         UpdateUtvonalList(_megallok);
         return _megallok;
     });
@@ -85,8 +83,6 @@ function UpdateUtvonalList(_megallok)
 function GetMegallokFromString(data,m_list)
 {
     if(data == "")return [];
-    console.log("Data: " + data);
-    console.log(m_list);
     var _megallok = [];
     var list = data.split("|");
         list.forEach(element =>{
